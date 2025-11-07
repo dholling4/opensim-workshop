@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSim Biomechanics Workshop - 2-Day Intensive Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header/Hero Section */
+        header {
+            position: relative;
+            color: white;
+            padding: 0;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 37, 60, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .essex-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            width: 200px;
+            height: auto;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15em;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-item svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Main Content */
+        main {
+            background: #ffffff;
+            padding-bottom: 0;
+        }
+
+        .content-section {
+            background: white;
+            margin: 0 auto 0;
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .section-dark {
+            background: #0f1419;
+            color: #ffffff;
+        }
+
+        .section-light {
+            background: #f8fafc;
+        }
+
+        h2 {
+            font-size: 3.5em;
+            color: #10253c;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section-dark h2 {
+            color: #ffffff;
+        }
+
+        h3 {
+            font-size: 2em;
+            color: #10253c;
+            margin: 60px 0 30px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .description {
+            font-size: 1.3em;
+            color: #475569;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 80px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .section-dark .description {
+            color: #cbd5e1;
+        }
+
+        /* Schedule */
+        .schedule {
+            margin: 60px 0;
+        }
+
+        .day {
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 50px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .day-title {
+            font-size: 2.4em;
+            color: #10253c;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .day-title span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            font-size: 1.6em;
+            color: white;
+            font-weight: 800;
+        }
+
+        .day-title {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .day-title::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            font-size: 0.6em;
+            transition: transform 0.3s ease;
+        }
+
+        .day-title.collapsed::after {
+            transform: rotate(-90deg);
+        }
+
+        .day-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .day-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .session {
+            background: #f8fafc;
+            padding: 30px 35px;
+            margin: 20px 0;
+            border-radius: 16px;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .session:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+            background: white;
+        }
+
+        .session-time {
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.15em;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .session-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #10253c;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .session-description {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+
+        .feature {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: white;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 35px;
+        }
+
+        .feature h4 {
+            font-size: 1.6em;
+            color: #10253c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            text-align: center;
+            padding: 150px 60px;
+            color: white;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .cta-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 37, 60, 0.95) 0%, rgba(59, 130, 246, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.5em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 45px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #10253c;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #10253c;
+            transform: translateY(-4px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #1f1f1f;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 1.05em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { 
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .modal h3 {
+            color: #667eea;
+            margin: 0 0 20px 0;
+            padding: 0;
+            border: none;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                height: auto;
+                min-height: 600px;
+                padding: 80px 0;
+            }
+
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .subtitle {
+                font-size: 1.3em;
+            }
+
+            .content-section {
+                padding: 80px 20px;
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+
+            h3 {
+                font-size: 1.6em;
+            }
+
+            .hero-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-section {
+                padding: 100px 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .day {
+                padding: 30px 20px;
+            }
+
+            .day-title {
+                font-size: 1.8em;
+            }
+
+            .session {
+                padding: 20px 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Hero Section -->
+    <header>
+        <img src="essex-logo.jpg" alt="University of Essex Logo" class="essex-logo">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" alt="Biomechanics Lab" class="hero-background">
+        <div class="container">
+            <h1>OpenSim Biomechanics Workshop</h1>
+            <p class="subtitle">Introduction to Musculoskeletal Modeling & Simulation in an Intensive 2-Day Program</p>
+            <div class="hero-info">
+                <div class="info-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>2-Day Intensive</span>
+                </div>
+                <div class="info-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>University of Essex</span>
+                </div>
+                <div class="info-item">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                    </svg>
+                    <span>Limited Seats</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg fill="white" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Prerequisites Section -->
+            <div class="content-section section-light">
+                <h2>Prerequisites</h2>
+                <p class="description">
+                    This workshop is designed for graduate students, post-graduate students, and researchers 
+                    with the following background:
+                </p>
+                <ul style="font-size: 1.2em; color: #475569; line-height: 2.2; margin-left: 40px; max-width: 900px; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
+                    <li>Graduate, post-graduate students, or researchers</li>
+                    <li>Proficient in 3D motion capture, biomechanical modelling (not MSK modelling), and inverse dynamics (e.g. joint moments)</li>
+                    <li>Basic coding experience in MATLAB or Python</li>
+                    <li>Bring your own laptop (Windows, Mac, or Linux)</li>
+                    <li>OpenSim software installed (instructions will be provided upon registration)</li>
+                </ul>
+            </div>
+
+            <!-- What You'll Learn Section -->
+            <div class="content-section section-dark">
+                <h2>What You'll Learn</h2>
+                <p class="description">
+                    Gain comprehensive skills in computational biomechanics and musculoskeletal modeling.
+                </p>
+                <ul style="font-size: 1.2em; color: #cbd5e1; line-height: 2.2; margin-left: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <li>Fundamentals of musculoskeletal modeling workflow in OpenSim</li>
+                    <li>Personalizing generic musculoskeletal model with motion capture inputs</li>
+                    <li>Inverse kinematics</li>
+                    <li>Static optimization and joint reaction force analysis</li>
+                    <li>Result validation</li>
+                </ul>
+            </div>
+
+            <!-- Logistics Section -->
+            <div class="content-section section-light">
+                <h2>Workshop Details</h2>
+                <p class="description">
+                    Tea and coffee will be provided during breaks. Participants are responsible for 
+                    arranging their own accommodation and meals.
+                </p>
+                <p class="description" style="margin-top: 30px;">
+                    For any questions about accommodation or other queries, please contact us at 
+                    <a href="mailto:workshop@essex.ac.uk" style="color: #3b82f6; text-decoration: none; font-weight: 600;">workshop@essex.ac.uk</a>
+                </p>
+
+                <!-- Features -->
+                <div class="features">
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Person working on computer with data" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Hands-On Training</h4>
+                            <p>Work directly with OpenSim software through guided tutorials and practical exercises in our state-of-the-art facilities</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Expert instructor teaching" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Expert Instructors</h4>
+                            <p>Learn from experienced biomechanics researchers and OpenSim specialists with years of industry experience</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Data analysis and research" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Real-World Applications</h4>
+                            <p>Apply modeling techniques to actual biomechanics research problems and case studies</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" alt="Professional networking" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Networking</h4>
+                            <p>Connect with fellow researchers and build your professional network in the biomechanics community</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2073&auto=format&fit=crop" alt="Course materials and resources" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Course Materials</h4>
+                            <p>Receive comprehensive resources and datasets for continued learning after the workshop</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop" alt="Certificate and achievement" class="feature-image">
+                        <div class="feature-content">
+                            <h4>Certificate</h4>
+                            <p>Earn a certificate of completion for your professional development and career advancement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What You'll Learn Section -->
+            <div class="content-section section-dark">
+                <h2>What You'll Learn</h2>
+                <p class="description">
+                    Gain comprehensive skills in computational biomechanics and musculoskeletal modeling.
+                </p>
+                <ul style="font-size: 1.2em; color: #cbd5e1; line-height: 2.2; margin-left: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <li>Fundamentals of musculoskeletal modeling workflow in OpenSim</li>
+                    <li>Personalizing generic musculoskeletal model with motion capture inputs</li>
+                    <li>Inverse kinematics</li>
+                    <li>Static optimization and joint reaction force analysis</li>
+                    <li>Result validation</li>
+                </ul>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section fade-in">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" alt="Workshop collaboration" class="cta-background">
+                <div class="container">
+                    <h2>Ready to Join Us?</h2>
+                    <p>Secure your spot in this exclusive workshop. Limited seats available!</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" id="registerBtn">
+                            Register Now
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:workshop@essex.ac.uk" class="btn btn-secondary">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 University of Essex - Biomechanics Research Group</p>
+            <p style="margin-top: 10px;">Questions? Email: workshop@essex.ac.uk</p>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Choose Your Registration Platform</h3>
+            <p style="color: #666; margin-bottom: 20px;">Select your preferred registration method:</p>
+            <div class="modal-options">
+                <a href="https://docs.google.com/forms/d/1GT85zLG0nhgcCfEWu9q2pGbRYcNE_8D_EzASM9oJEx0/viewform" target="_blank" class="modal-btn">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.727 6.727H14V6H6v1.455h7.182v-.728zm0 3.273H14V9.273H6v.727h8.727zM6 12.727h5.455V12H6v.727zm13.091-9.454H4.91c-.803 0-1.455.652-1.455 1.454v14.546c0 .802.652 1.454 1.455 1.454h14.182c.803 0 1.454-.652 1.454-1.454V4.727c0-.802-.651-1.454-1.454-1.454zm0 16h-14.182V4.727h14.182v14.546z"/>
+                    </svg>
+                    Register via Google Forms
+                </a>
+                <a href="https://essex.qualtrics.com/your-survey-id" target="_blank" class="modal-btn">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                    Register via Qualtrics
+                </a>
+            </div>
+            <p style="margin-top: 20px; color: #999; font-size: 0.9em; text-align: center;">
+                Both forms will collect the same information. Choose whichever is more convenient for you.
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('registerModal');
+        const btn = document.getElementById('registerBtn');
+        const span = document.getElementsByClassName('close')[0];
+
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add hover effect to sessions
+        document.querySelectorAll('.session').forEach(session => {
+            session.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f8f9fa';
+            });
+            session.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'white';
+            });
+        });
+
+        // Toggle day schedule visibility
+        function toggleDay(element) {
+            const content = element.nextElementSibling;
+            const isCollapsed = content.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                content.classList.remove('collapsed');
+                element.classList.remove('collapsed');
+            } else {
+                content.classList.add('collapsed');
+                element.classList.add('collapsed');
+            }
+        }
+
+        // Initialize all days as collapsed on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.day-title').forEach(function(title) {
+                title.classList.add('collapsed');
+                title.nextElementSibling.classList.add('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>
