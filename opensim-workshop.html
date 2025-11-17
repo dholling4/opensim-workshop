@@ -171,6 +171,38 @@
             color: #ffffff;
         }
 
+        .what-you-learn {
+            position: relative;
+            background: #0f1419;
+            overflow: hidden;
+        }
+
+        .what-you-learn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('opensim-lower-body.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .what-you-learn .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .what-you-learn h2,
+        .what-you-learn .description,
+        .what-you-learn ul {
+            position: relative;
+            z-index: 1;
+        }
+
         .section-light {
             background: #f8fafc;
         }
@@ -701,9 +733,9 @@
                 </ul>
             </div>
 
-            <!-- What You Will Learn Section -->
-            <div class="content-section section-dark">
-                <h2>What You Will Learn</h2>
+            <!-- What You'll Learn Section -->
+            <div class="content-section section-dark what-you-learn">
+                <h2>What You'll Learn</h2>
                 <p class="description">
                     Gain comprehensive skills in computational biomechanics and musculoskeletal modeling.
                 </p>
@@ -731,45 +763,45 @@
                 <!-- Features -->
                 <div class="features">
                     <div class="feature">
-                        <img src="https://simtk-confluence.stanford.edu:8443/download/attachments/2919896/OpenSim_GUI_image.png?version=1&modificationDate=1349987479000&api=v2" alt="OpenSim GUI Interface" class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Person working on computer with data" class="feature-image">
                         <div class="feature-content">
-                            <h4>OpenSim Software Platform</h4>
-                            <p>Learn to navigate the OpenSim graphical interface and work with musculoskeletal models in 3D visualization</p>
+                            <h4>Hands-On Training</h4>
+                            <p>Work directly with OpenSim software through guided tutorials and practical exercises in our state-of-the-art facilities</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <img src="https://opensim.stanford.edu/sites/default/files/styles/large/public/images/overview_scaled.png?itok=sFr6kh1K" alt="Musculoskeletal model visualization" class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Expert instructor teaching" class="feature-image">
                         <div class="feature-content">
-                            <h4>Musculoskeletal Models</h4>
-                            <p>Work with detailed anatomical models including bones, muscles, ligaments, and contact geometry</p>
+                            <h4>Expert Instructors</h4>
+                            <p>Learn from experienced biomechanics researchers and OpenSim specialists with years of industry experience</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <img src="https://opensim.stanford.edu/sites/default/files/images/ik_animation.gif" alt="Inverse kinematics analysis" class="feature-image">
+                        <img src="opensim-lower-body.png" alt="OpenSim musculoskeletal model" class="feature-image">
                         <div class="feature-content">
-                            <h4>Inverse Kinematics</h4>
-                            <p>Transform motion capture data into detailed joint angle trajectories using inverse kinematics algorithms</p>
+                            <h4>Real-World Applications</h4>
+                            <p>Apply modeling techniques to actual biomechanics research problems and case studies</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <img src="https://simtk-confluence.stanford.edu:8443/download/attachments/6652188/muscle_force_plot.png?version=1&modificationDate=1317158400000&api=v2" alt="Muscle force analysis" class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" alt="Professional networking" class="feature-image">
                         <div class="feature-content">
-                            <h4>Muscle Force Estimation</h4>
-                            <p>Estimate individual muscle forces and activations during movement using static optimization</p>
+                            <h4>Networking</h4>
+                            <p>Connect with fellow researchers and build your professional network in the biomechanics community</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <img src="https://opensim.stanford.edu/sites/default/files/images/joint_reaction_loads.png" alt="Joint reaction force analysis" class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2073&auto=format&fit=crop" alt="Course materials and resources" class="feature-image">
                         <div class="feature-content">
-                            <h4>Joint Reaction Analysis</h4>
-                            <p>Calculate forces and moments acting at joints to understand loading patterns during activities</p>
+                            <h4>Course Materials</h4>
+                            <p>Receive comprehensive resources and datasets for continued learning after the workshop</p>
                         </div>
                     </div>
                     <div class="feature">
-                        <img src="https://simtk-confluence.stanford.edu:8443/download/attachments/6652188/scaled_model.png?version=1&modificationDate=1317158400000&api=v2" alt="Model scaling" class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop" alt="Certificate and achievement" class="feature-image">
                         <div class="feature-content">
-                            <h4>Model Personalization</h4>
-                            <p>Scale generic models to match individual subject anthropometry from motion capture marker data</p>
+                            <h4>Certificate</h4>
+                            <p>Earn a certificate of completion for your professional development and career advancement</p>
                         </div>
                     </div>
                 </div>
