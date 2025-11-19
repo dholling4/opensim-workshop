@@ -1007,7 +1007,7 @@
                     <h2>Ready to Join Us?</h2>
                     <p>Secure your spot in this exclusive workshop. Limited seats available!</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn btn-primary" id="registerBtn">
+                        <a href="https://docs.google.com/forms/d/1GT85zLG0nhgcCfEWu9q2pGbRYcNE_8D_EzASM9oJEx0/viewform" target="_blank" class="btn btn-primary">
                             Register Now
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -1034,45 +1034,8 @@
         </div>
     </footer>
 
-    <!-- Registration Modal -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Register for the Workshop</h3>
-            <p style="color: #666; margin-bottom: 20px;">Complete the registration form to secure your spot:</p>
-            <div class="modal-options">
-                <a href="https://docs.google.com/forms/d/1GT85zLG0nhgcCfEWu9q2pGbRYcNE_8D_EzASM9oJEx0/viewform" target="_blank" class="modal-btn">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.727 6.727H14V6H6v1.455h7.182v-.728zm0 3.273H14V9.273H6v.727h8.727zM6 12.727h5.455V12H6v.727zm13.091-9.454H4.91c-.803 0-1.455.652-1.455 1.454v14.546c0 .802.652 1.454 1.455 1.454h14.182c.803 0 1.454-.652 1.454-1.454V4.727c0-.802-.651-1.454-1.454-1.454zm0 16h-14.182V4.727h14.182v14.546z"/>
-                    </svg>
-                    Register via Google Forms
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- JavaScript -->
     <script>
-        // Modal functionality
-        const modal = document.getElementById('registerModal');
-        const btn = document.getElementById('registerBtn');
-        const span = document.getElementsByClassName('close')[0];
-
-        btn.onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = 'block';
-        }
-
-        span.onclick = function() {
-            modal.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
